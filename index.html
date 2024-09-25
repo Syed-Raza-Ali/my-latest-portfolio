@@ -227,9 +227,7 @@
 											const formData = {
 												name: document.getElementById('customName').value,
 												email: document.getElementById('customEmail').value,
-												phone: document.getElementById('customPhone').value,
-												carModel: document.getElementById('customCarModel').value,
-												rentalDates: document.getElementById('customRentalDates').value,
+												Subject: document.getElementById('customSubject').value,
 												message: document.getElementById('customMessage').value,
 											};
 
@@ -321,7 +319,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="row d-flex justify-content-center align-items-stretch">
-					<!-- <div class="row d-flex"> -->
 					<div class="col-md-6 col-lg-5 d-flex">
 						<div class="img-about img d-flex align-items-stretch">
 							<div class="overlay">
@@ -402,7 +399,7 @@
 									<li class="d-flex"><span>Education:</span> <span>Study in Commerce 2nd year
 											(Continue)</span></li>
 									<li class="d-flex"><span>Language:</span> <span>English, Urdu</span></li>
-									<!-- <li class="d-flex"><span>BI Tools:</span> <span>Microsoft Power BI, Looker &amp; Tableau</span></li> -->
+									
 									<li class="d-flex"><span>Other Skills:</span> <span> AI Chatbots, Databases,
 											Bootstrap, AI tools &amp; API Integration</span></li>
 									<li class="d-flex"><span>Interest:</span> <span>Earning, Traveling And Explore New
@@ -521,21 +518,6 @@
 	<br>
 	<br>
 
-
-
-	<!-- 
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-5">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Projects</h1>
-					<h2 class="mb-4">Projects</h2>
-					<p>Below are same projects on HTML, CSS5, BootStrap, JQuery, JavaScript, BlockChain, ReactJS that I
-						have created or worked on.
-					</p>
-				</div>
-			</div>
-			<div class="row d-flex projects">
-				added justify-content-center to center align the last two projects -->
 	</div>
 	</div>
 	</section>
@@ -570,8 +552,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- </section>
-	<section class="ftco-section" > -->
+
 		<div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)"
 			id="project-section">
 
@@ -586,12 +567,8 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
-
-
-
 	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
@@ -600,13 +577,12 @@
 					<h2 class="mb-4">Contact Me</h2>
 					<p>Below are the details to reach out to me!</p>
 				</div>
-				
-			</div>
-			
 
-			<div class = "form">
+			</div>
+
+
+			<div class="form">
 				<div class="custom-form-container">
-					<!-- <h1 class="custom-form-title">GET IN TOUCH</h1> -->
 					<form id="customForm">
 						<div>
 							<label class="custom-form-label" for="customName">Name</label>
@@ -620,16 +596,7 @@
 							<label class="custom-form-label" for="customPhone">Subject</label>
 							<input class="custom-form-input" type="tel" id="customPhone" name="customPhone" required>
 						</div>
-						<!-- <div>
-							<label class="custom-form-label" for="customCarModel">Car Model</label>
-							<input class="custom-form-input" type="text" id="customCarModel" name="customCarModel"
-								required>
-						</div>
-						<div>
-							<label class="custom-form-label" for="customRentalDates">Rental Dates</label>
-							<input class="custom-form-input" type="text" id="customRentalDates" name="customRentalDates"
-								required>
-						</div> -->
+						
 						<div>
 							<label class="custom-form-label" for="customMessage">Message</label>
 							<textarea class="custom-form-textarea" id="customMessage" name="customMessage"
@@ -647,8 +614,8 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-whatsapp"></span>
 						</div>
-						<h3 class="mb-4">Contact Number</h3>
-						<p><a href="/" onclick="sendWhatsAppMessage()">WhatsApp</a></p>
+						<!-- <h3 class="mb-4">Whatsapp</h3> -->
+						<h3><a href="/" onclick="sendWhatsAppMessage()">WhatsApp</a></h3>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -656,8 +623,8 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-phone2"></span>
 						</div>
-						<h3 class="mb-4">Contact Number</h3>
-						<p><a href="tel:+923163598101">+92 316 3598101</a></p>
+						<!-- <h3 class="mb-4">Contact Number</h3> -->
+						<h3><a href="tel:+923163598101">Contact</a></h3>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -665,8 +632,8 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-paper-plane"></span>
 						</div>
-						<h3 class="mb-4">Email Address</h3>
-						<p><a href="gmail:itsrazaalishah303@gmail.com">itsrazaalishah303@gmail.com</a></p>
+						<!-- <h3 class="mb-4">Email Address</h3> -->
+						<h3><a href="gmail:itsrazaalishah303@gmail.com">Email</a></h3>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -674,12 +641,13 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-linkedin"></span>
 						</div>
-						<h3 class="mb-4">Linkedin Profile</h3>
-						<p><a href="https://www.linkedin.com/in/syed-raza-ali-346263308/" target="_blank">Click Here</a></p>
+						<!-- <h3 class="mb-4">Linkedin Profile</h3> -->
+						<h3><a href="https://www.linkedin.com/in/syed-raza-ali-346263308/" target="_blank">Linkedin</a>
+						</h3>
 					</div>
 				</div>
 
-				
+
 			</div>
 	</section>
 
