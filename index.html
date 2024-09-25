@@ -221,6 +221,43 @@
 									<!-- Element to contain animated typing -->
 									<span id="typing-animation"></span>
 									<script>
+										import nodemailer from 'nodemailer';
+
+										export default async function handler(req, res) {
+											if (req.method === 'POST') {
+												const { name, email, Subject, message } = req.body;
+
+												const transporter = nodemailer.createTransport({
+													service: 'Gmail',
+													auth: {
+														user: "itsrazaalishah303@gmail.com",
+														pass: "nyqgwvimxmuadhwy",
+													},
+												});
+
+												try {
+													await transporter.sendMail({
+														from: email,
+														to: 'itsrazaalishah303@gmail.com',
+														subject: `New Contact Form Submission from ${name}`,
+														html: `
+														You Car has been booked on here is your detailed information: 
+															<p>Name: ${name}</p>
+															<p>Email: ${email}</p>
+															<p>Subject: ${Subject}</p>
+															<p>Message: ${message}</p>
+															`,
+													});
+
+													res.status(200).json({ message: 'Your Information is Sended' });
+												} catch (error) {
+													console.error(error);
+													res.status(500).json({ message: 'Failed to send message' });
+												}
+											} else {
+												res.status(405).json({ message: 'Method not allowed' });
+											}
+										}
 										document.getElementById('customForm').addEventListener('submit', async function (e) {
 											e.preventDefault();
 
@@ -290,7 +327,6 @@
 										and AI chatbot <br> development
 									</h2>
 
-									<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 2 years of experience</h2> -->
 									<br>
 									<p><a href="https://www.linkedin.com/in/syed-raza-ali-346263308/" target="_blank"
 											class="btn btn-primary py-3 px-4">Linkedin</a>
@@ -399,7 +435,7 @@
 									<li class="d-flex"><span>Education:</span> <span>Study in Commerce 2nd year
 											(Continue)</span></li>
 									<li class="d-flex"><span>Language:</span> <span>English, Urdu</span></li>
-									
+
 									<li class="d-flex"><span>Other Skills:</span> <span> AI Chatbots, Databases,
 											Bootstrap, AI tools &amp; API Integration</span></li>
 									<li class="d-flex"><span>Interest:</span> <span>Earning, Traveling And Explore New
@@ -596,13 +632,13 @@
 							<label class="custom-form-label" for="customPhone">Subject</label>
 							<input class="custom-form-input" type="tel" id="customPhone" name="customPhone" required>
 						</div>
-						
+
 						<div>
 							<label class="custom-form-label" for="customMessage">Message</label>
 							<textarea class="custom-form-textarea" id="customMessage" name="customMessage"
 								required></textarea>
 						</div>
-						<button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+						<button class="btn btn-primary py-3 px-5" type="submit" onclick="handler()">Send Message</button>
 					</form>
 				</div>
 			</div>
@@ -614,7 +650,6 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-whatsapp"></span>
 						</div>
-						<!-- <h3 class="mb-4">Whatsapp</h3> -->
 						<h3><a href="/" onclick="sendWhatsAppMessage()">WhatsApp</a></h3>
 					</div>
 				</div>
@@ -623,7 +658,6 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-phone2"></span>
 						</div>
-						<!-- <h3 class="mb-4">Contact Number</h3> -->
 						<h3><a href="tel:+923163598101">Contact</a></h3>
 					</div>
 				</div>
@@ -632,7 +666,6 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-paper-plane"></span>
 						</div>
-						<!-- <h3 class="mb-4">Email Address</h3> -->
 						<h3><a href="gmail:itsrazaalishah303@gmail.com">Email</a></h3>
 					</div>
 				</div>
@@ -641,7 +674,6 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="icon-linkedin"></span>
 						</div>
-						<!-- <h3 class="mb-4">Linkedin Profile</h3> -->
 						<h3><a href="https://www.linkedin.com/in/syed-raza-ali-346263308/" target="_blank">Linkedin</a>
 						</h3>
 					</div>
@@ -650,9 +682,6 @@
 
 			</div>
 	</section>
-
-
-
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
