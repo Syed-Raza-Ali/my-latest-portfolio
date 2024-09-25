@@ -216,80 +216,11 @@
 								data-scrollax=" properties: { translateY: '70%' }">
 								<div class="text">
 									<span class="subheading">Hello!</span>
-									<h1 class="mb-4 mt-3">I'm <span>RAZA</span></h1>
+									<h1 class="mb-4 mt-3">I'm <span >RAZA</span></h1>
 
 									<!-- Element to contain animated typing -->
 									<span id="typing-animation"></span>
 									<script>
-										import nodemailer from 'nodemailer';
-
-										export default async function handler(req, res) {
-											if (req.method === 'POST') {
-												const { name, email, Subject, message } = req.body;
-
-												const transporter = nodemailer.createTransport({
-													service: 'Gmail',
-													auth: {
-														user: "itsrazaalishah303@gmail.com",
-														pass: "nyqgwvimxmuadhwy",
-													},
-												});
-
-												try {
-													await transporter.sendMail({
-														from: email,
-														to: 'itsrazaalishah303@gmail.com',
-														subject: `New Contact Form Submission from ${name}`,
-														html: `
-														You Car has been booked on here is your detailed information: 
-															<p>Name: ${name}</p>
-															<p>Email: ${email}</p>
-															<p>Subject: ${Subject}</p>
-															<p>Message: ${message}</p>
-															`,
-													});
-
-													res.status(200).json({ message: 'Your Information is Sended' });
-												} catch (error) {
-													console.error(error);
-													res.status(500).json({ message: 'Failed to send message' });
-												}
-											} else {
-												res.status(405).json({ message: 'Method not allowed' });
-											}
-										}
-										document.getElementById('customForm').addEventListener('submit', async function (e) {
-											e.preventDefault();
-
-											const formData = {
-												name: document.getElementById('customName').value,
-												email: document.getElementById('customEmail').value,
-												Subject: document.getElementById('customSubject').value,
-												message: document.getElementById('customMessage').value,
-											};
-
-											try {
-												const res = await fetch('/api/contact', {
-													method: 'POST',
-													headers: {
-														'Content-Type': 'application/json',
-													},
-													body: JSON.stringify(formData),
-												});
-
-												if (res.ok) {
-													alert('Your information has been sent.');
-													document.getElementById('customForm').reset();
-												} else {
-													alert('Failed to send message.');
-												}
-											} catch (error) {
-												console.error(error);
-												alert('An error occurred while sending your message.');
-											}
-										});
-
-
 										// Initialize the typing animation
 										const typingAnimationElement = document.getElementById('typing-animation');
 
@@ -318,8 +249,7 @@
 
 										// Start the typing animation loop
 										playTypingAnimation(typingTexts[0]);
-
-									</script>
+								</script>
 
 									<br>
 									<br>
@@ -638,7 +568,8 @@
 							<textarea class="custom-form-textarea" id="customMessage" name="customMessage"
 								required></textarea>
 						</div>
-						<button class="btn btn-primary py-3 px-5" type="submit" onclick="handler()">Send Message</button>
+						<button class="btn btn-primary py-3 px-5" type="submit" onclick="handler()">Send
+							Message</button>
 					</form>
 				</div>
 			</div>
