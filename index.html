@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	<title>RAZA's Portfolio</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -99,6 +99,18 @@
 			}
 		}
 
+		.about-img {
+			background-color: transparent;
+			transition: transform 0.3s ease;
+			/* Adjust the duration and timing as needed */
+			transform: scale(1);
+			/* Initial scale */
+		}
+
+		.about-img:hover {
+			transform: scale(1.25);
+			/* Scale on hover */
+		}
 
 		/* project image zoom effect */
 
@@ -216,7 +228,7 @@
 								data-scrollax=" properties: { translateY: '70%' }">
 								<div class="text">
 									<span class="subheading">Hello!</span>
-									<h1 class="mb-4 mt-3">I'm <span >RAZA</span></h1>
+									<h1 class="mb-4 mt-3">I'm <span>RAZA</span></h1>
 
 									<!-- Element to contain animated typing -->
 									<span id="typing-animation"></span>
@@ -249,7 +261,7 @@
 
 										// Start the typing animation loop
 										playTypingAnimation(typingTexts[0]);
-								</script>
+									</script>
 
 									<br>
 									<br>
@@ -568,8 +580,9 @@
 							<textarea class="custom-form-textarea" id="customMessage" name="customMessage"
 								required></textarea>
 						</div>
-						<button class="btn btn-primary py-3 px-5" type="submit" onclick="handler()">Send
+						<button type="submit" class="btn btn-primary py-3 px-5" onclick="handler()">Send
 							Message</button>
+						<!-- <p><a href="./Cv.pdf" target="_blank" class="btn btn-primary py-4 px-5">See My CV</a></p> -->
 					</form>
 				</div>
 			</div>
@@ -665,7 +678,72 @@
 			window.open(whatsapp_url, '_blank');
 		}
 	</script>
+	<!-- 
+	 contact form sending process on hold
+	 <script>
+		import nodemailer from 'nodemailer';
 
+		export default async function handler(req, res) {
+			if (req.method === 'POST') {
+				const { name, email, Subject, message } = req.body;
+
+				const transporter = nodemailer.createTransport({
+					service: 'Gmail',
+					auth: {
+						user: "itsrazaalishah303@gmail.com",
+						pass: "nyqgwvimxmuadhwy",
+					},
+				});
+
+				try {
+					await transporter.sendMail({
+						from: email,
+						to: 'itsrazaalishah303@gmail.com',
+						subject: `New Contact Form Submission from ${name}`,
+						html: `
+        You Car has been booked on here is your detailed information: 
+               <p>Name: ${name}</p>
+               <p>Email: ${email}</p>
+               <p>Subject: ${Subject}</p>
+               <p>Message: ${message}</p>
+               `,
+					});
+
+					res.status(200).json({ message: 'Your Information is Sended' });
+				} catch (error) {
+					console.error(error);
+					res.status(500).json({ message: 'Failed to send message' });
+				}
+			} else {
+				res.status(405).json({ message: 'Method not allowed' });
+			}
+		}
+		document.getElementById('contactForm').addEventListener('submit', async function (e) {
+			e.preventDefault();  // Prevent page reload
+			const formData = new FormData(this);
+			const jsonData = Object.fromEntries(formData.entries());
+
+			try {
+				const response = await fetch('/api/contact', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(jsonData),
+				});
+
+				if (response.ok) {
+					alert('Your message has been sent successfully!');
+					this.reset();  // Clear the form
+				} else {
+					alert('Failed to send message. Please try again.');
+				}
+			} catch (error) {
+				console.error('Error sending message:', error);
+				alert('Error occurred while sending the message.');
+			}
+		});
+	</script> -->
 </body>
 
 </html>
