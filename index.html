@@ -558,73 +558,58 @@
 
 			</div>
 
-
-			<div class="form">
-				<div class="custom-form-container">
-					<form id="customForm">
-						<div>
-							<label class="custom-form-label" for="customName">Name</label>
-							<input class="custom-form-input" type="text" id="customName" name="customName" required>
-						</div>
-						<div>
-							<label class="custom-form-label" for="customEmail">Email</label>
-							<input class="custom-form-input" type="email" id="customEmail" name="customEmail" required>
-						</div>
-						<div>
-							<label class="custom-form-label" for="customPhone">Subject</label>
-							<input class="custom-form-input" type="tel" id="customPhone" name="customPhone" required>
-						</div>
-
-						<div>
-							<label class="custom-form-label" for="customMessage">Message</label>
-							<textarea class="custom-form-textarea" id="customMessage" name="customMessage"
-								required></textarea>
-						</div>
-						<button type="submit" class="btn btn-primary py-3 px-5" onclick="handler()">Send
-							Message</button>
-						<!-- <p><a href="./Cv.pdf" target="_blank" class="btn btn-primary py-4 px-5">See My CV</a></p> -->
-					</form>
+			<div class="container">
+				<br>
+				<br>
+				<div class="row justify-content-center">
+					<div class="col-md-7 ftco-animate text-center">
+						<h2>Have a<span> Question? </span> <a href="mailto:itsrazaalishah303@gmail.com" onclick="sendWhatsAppMessage()"
+								class="btn btn-primary py-3 px-5">Click Here</a> </h2>
+					</div>
+				</div>
+				<br>
+				<br>
+			</div>
+		</div>
+		<br>
+		<div class="row d-flex contact-info mb-5">
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="icon-whatsapp"></span>
+					</div>
+					<h3><a href="/" onclick="sendWhatsAppMessage()">WhatsApp</a></h3>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="icon-phone2"></span>
+					</div>
+					<h3><a href="tel:+923163598101">Contact</a></h3>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="icon-paper-plane"></span>
+					</div>
+					<h3><a href="mailto:itsrazaalishah303@gmail.com">Email</a></h3>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="icon-linkedin"></span>
+					</div>
+					<h3><a href="https://www.linkedin.com/in/syed-raza-ali-346263308/" target="_blank">Linkedin</a>
+					</h3>
 				</div>
 			</div>
 
-			<br>
-			<div class="row d-flex contact-info mb-5">
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-whatsapp"></span>
-						</div>
-						<h3><a href="/" onclick="sendWhatsAppMessage()">WhatsApp</a></h3>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-phone2"></span>
-						</div>
-						<h3><a href="tel:+923163598101">Contact</a></h3>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-paper-plane"></span>
-						</div>
-						<h3><a href="gmail:itsrazaalishah303@gmail.com">Email</a></h3>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-linkedin"></span>
-						</div>
-						<h3><a href="https://www.linkedin.com/in/syed-raza-ali-346263308/" target="_blank">Linkedin</a>
-						</h3>
-					</div>
-				</div>
 
+		</div>
 
-			</div>
 	</section>
 
 	<footer class="ftco-footer ftco-section">
@@ -678,14 +663,15 @@
 			window.open(whatsapp_url, '_blank');
 		}
 	</script>
-	<!-- 
-	 contact form sending process on hold
-	 <script>
+
+	<!-- contact form sending process on hold -->
+	<!-- <script>
+		import { useState } from 'react';
 		import nodemailer from 'nodemailer';
 
 		export default async function handler(req, res) {
 			if (req.method === 'POST') {
-				const { name, email, Subject, message } = req.body;
+				const { name, email, subject, message } = req.body;
 
 				const transporter = nodemailer.createTransport({
 					service: 'Gmail',
@@ -718,31 +704,46 @@
 				res.status(405).json({ message: 'Method not allowed' });
 			}
 		}
-		document.getElementById('contactForm').addEventListener('submit', async function (e) {
-			e.preventDefault();  // Prevent page reload
-			const formData = new FormData(this);
-			const jsonData = Object.fromEntries(formData.entries());
+		export default function ContactForm() {
+			const [formData, setFormData] = useState({
+				name: '',
+				email: '',
+				subject: '',
+				message: '',
+			});
 
-			try {
-				const response = await fetch('/api/contact', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(jsonData),
-				});
+			const handleChange = (e) => {
+				setFormData({ ...formData, [e.target.name]: e.target.value });
+			};
 
-				if (response.ok) {
-					alert('Your message has been sent successfully!');
-					this.reset();  // Clear the form
-				} else {
-					alert('Failed to send message. Please try again.');
+			const handleSubmit = async (e) => {
+				e.preventDefault();
+				try {
+					const res = await fetch('/api/contact', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(formData),
+					});
+					if (res.ok) {
+						alert('Your Information is Sended');
+						setFormData({
+							name: '',
+							email: '',
+							subject: '',
+							message: '',
+						});
+					} else {
+						alert('Failed to send message');
+					}
+				} catch (error) {
+					console.error(error);
+					alert('Error occurred while sending message');
 				}
-			} catch (error) {
-				console.error('Error sending message:', error);
-				alert('Error occurred while sending the message.');
-			}
-		});
+			};
+		}
+
 	</script> -->
 </body>
 
